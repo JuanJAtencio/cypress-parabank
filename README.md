@@ -24,10 +24,30 @@ Desarrollado con **Cypress** y **JavaScript** para validar los flujos funcionale
 
 ---
 
+## 🧱 Arquitectura
+
+El proyecto implementa Page Object Model (POM) para mejorar la mantenibilidad y reutilización del código.
+
+- Cada página tiene su archivo en `/pages`
+- Los tests en `/e2e` consumen estos métodos
+- Se separa lógica de UI de los tests
+
+Ejemplo:
+
+LoginPage.js → acciones sobre login  
+login.cy.js → flujo de prueba
+
 ## ▶️ Cómo ejecutar las pruebas
 
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com/TU_USUARIO/Cypress-Parabank.git
+   git clone https://github.com/JuanJAtencio/cypress-parabank.git
+cd cypress-parabank
    cd Cypress-Parabank
    ```
+## ⚙️ Buenas prácticas
+
+- Uso de Page Object Model (POM)
+- Datos dinámicos para evitar conflictos
+- Separación de responsabilidades
+- Tests independientes
