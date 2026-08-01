@@ -1,7 +1,10 @@
 /// <reference types="cypress" />
 
 context('Cypress APIs', () => {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 55d03f5fc09ece8014e0ec5b97084693de44bb77
   context('Cypress.Commands', () => {
     beforeEach(() => {
       cy.visit('https://example.cypress.io/cypress-api')

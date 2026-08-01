@@ -1,32 +1,45 @@
-
-
-
-
+// cypress/pages/LoginPage.js
 
 class LoginPage {
 
-  visitar() {
+  // --- Selectores (un solo lugar, fácil de mantener) ---
+  get usernameInput()  { return cy.get('input[name="username"]') }
+  get passwordInput()  { return cy.get('input[name="password"]') }
+  get loginButton()    { return cy.get('input[value="Log In"]') }
+  get errorMessage()   { return cy.contains('Error!') }
+  get successTitle()   { return cy.contains('Accounts Overview') }
+
+  // --- Acciones ---
+  visit() {
     cy.visit('https://parabank.parasoft.com/parabank/index.htm')
   }
 
-  escribirUsuario(usuario) {
-    cy.get('input[name="username"]').type(usuario)
+  fillUsername(username) {
+    this.usernameInput.clear().type(username)
   }
 
-  escribirPassword(password) {
-    cy.get('input[name="password"]').type(password)
+  fillPassword(password) {
+    this.passwordInput.clear().type(password)
   }
 
-  clickLogin() {
-    cy.get('input[value="Log In"]').click()
+  submit() {
+    this.loginButton.click()
   }
 
+  // --- Flujo completo ---
+  login(username, password) {
+    this.fillUsername(username)
+    this.fillPassword(password)
+    this.submit()
+  }
+
+  // --- Validaciones ---
   validarLoginExitoso() {
-    cy.contains('Accounts Overview').should('be.visible')
+    this.successTitle.should('be.visible')
   }
 
   validarLoginFallido() {
-    cy.contains('Error!').should('be.visible')
+    this.errorMessage.should('be.visible')
   }
 }
 

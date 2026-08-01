@@ -64,9 +64,15 @@ context('Local Storage / Session Storage', () => {
       expect(storageMap).to.deep.equal({
         // other origins will also be present if localStorage is set on them
         'https://example.cypress.io': {
+<<<<<<< HEAD
           'prop1': 'red',
           'prop2': 'blue',
           'prop3': 'magenta',
+=======
+          prop1: 'red',
+          prop2: 'blue',
+          prop3: 'magenta',
+>>>>>>> 55d03f5fc09ece8014e0ec5b97084693de44bb77
         },
       })
     })
@@ -94,9 +100,15 @@ context('Local Storage / Session Storage', () => {
       expect(storageMap).to.deep.equal({
         // other origins will also be present if sessionStorage is set on them
         'https://example.cypress.io': {
+<<<<<<< HEAD
           'prop4': 'cyan',
           'prop5': 'yellow',
           'prop6': 'black',
+=======
+          prop4: 'cyan',
+          prop5: 'yellow',
+          prop6: 'black',
+>>>>>>> 55d03f5fc09ece8014e0ec5b97084693de44bb77
         },
       })
     })

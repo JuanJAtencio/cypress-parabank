@@ -17,9 +17,15 @@ context('Actions', () => {
     cy.get('.action-email').type('{del}{selectall}{backspace}')
 
     // .type() with key modifiers
+<<<<<<< HEAD
     cy.get('.action-email').type('{alt}{option}') //these are equivalent
     cy.get('.action-email').type('{ctrl}{control}') //these are equivalent
     cy.get('.action-email').type('{meta}{command}{cmd}') //these are equivalent
+=======
+    cy.get('.action-email').type('{alt}{option}') // these are equivalent
+    cy.get('.action-email').type('{ctrl}{control}') // these are equivalent
+    cy.get('.action-email').type('{meta}{command}{cmd}') // these are equivalent
+>>>>>>> 55d03f5fc09ece8014e0ec5b97084693de44bb77
     cy.get('.action-email').type('{shift}')
 
     // Delay each keypress by 0.1 sec
