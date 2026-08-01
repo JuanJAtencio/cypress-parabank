@@ -1,18 +1,21 @@
-// cypress/e2e/transfer.cy.js
 import LoginPage from '../pages/LoginPage'
 import TransferPage from '../pages/TransferPage'
 
 describe('Transferencia de fondos', () => {
 
   beforeEach(() => {
-    LoginPage.visit()
-    LoginPage.login('john', 'demo')
+    cy.fixture('users').then((users) => {
+      LoginPage.visit()
+      LoginPage.login(users.validUser.username, users.validUser.password)
+    })
   })
 
   it('Transferencia exitosa entre cuentas', () => {
-    TransferPage.visit()
-    TransferPage.transferir('100')
-    TransferPage.validarTransferenciaExitosa()
+    cy.fixture('transfer').then((data) => {
+      TransferPage.visit()
+      TransferPage.transferir(data.validTransfer.amount)
+      TransferPage.validarTransferenciaExitosa()
+    })
   })
 
 })
