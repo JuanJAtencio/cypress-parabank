@@ -4,27 +4,28 @@ import LoginPage from '../pages/LoginPage'
 describe('Registro + Login', () => {
 
   it('Crear usuario y loguearse', () => {
+    cy.fixture('profile').then((profile) => {
 
-    const user = {
-      nombre   : 'Juan',
-      apellido : 'QA',
-      direccion: 'Calle Falsa 123',
-      ciudad   : 'Buenos Aires',
-      estado   : 'BA',
-      zip      : '1234',
-      telefono : '123456789',
-      ssn      : '123456789',
-      username : 'user' + Date.now(),
-      password : '1234'
-    }
+      const user = {
+        nombre   : profile.firstName,
+        apellido : profile.lastName,
+        direccion: profile.address,
+        ciudad   : profile.city,
+        estado   : profile.state,
+        zip      : profile.zip,
+        telefono : profile.phone,
+        ssn      : profile.ssn,
+        username : 'user' + Date.now(),
+        password : profile.password
+      }
 
-    LoginPage.visit()
+      LoginPage.visit()
+      RegisterPage.irARegistro()
+      RegisterPage.completarFormulario(user)
+      RegisterPage.enviar()
+      RegisterPage.validarRegistroExitoso()
 
-    RegisterPage.irARegistro()
-    RegisterPage.completarFormulario(user)
-    RegisterPage.enviar()
-    RegisterPage.validarRegistroExitoso()
-
+    })
   })
 
 })

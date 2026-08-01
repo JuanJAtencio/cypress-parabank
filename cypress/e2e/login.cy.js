@@ -7,13 +7,17 @@ describe('Login Parabank', () => {
   })
 
   it('Login fallido con credenciales incorrectas', () => {
-    LoginPage.login('usuarioFake', '1234')
-    LoginPage.validarLoginFallido()
+    cy.fixture('users').then((users) => {
+      LoginPage.login(users.invalidUser.username, users.invalidUser.password)
+      LoginPage.validarLoginFallido()
+    })
   })
 
   it('Login exitoso', () => {
-    LoginPage.login('john', 'demo')
-    LoginPage.validarLoginExitoso()
+    cy.fixture('users').then((users) => {
+      LoginPage.login(users.validUser.username, users.validUser.password)
+      LoginPage.validarLoginExitoso()
+    })
   })
 
 })

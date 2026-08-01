@@ -1,5 +1,11 @@
 {
-  "id": 8739,
-  "name": "Jane",
-  "email": "jane@example.com"
+  "firstName": "Juan",
+  "lastName": "QA",
+  "address": "Calle Falsa 123",
+  "city": "Buenos Aires",
+  "state": "BA",
+  "zip": "1234",
+  "phone": "123456789",
+  "ssn": "123456789",
+  "password": "Test1234!"
 }
