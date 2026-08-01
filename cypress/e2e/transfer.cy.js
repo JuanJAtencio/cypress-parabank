@@ -18,4 +18,12 @@ describe('Transferencia de fondos', () => {
     })
   })
 
+  it('Transferencia fallida con monto cero', () => {
+    cy.fixture('transfer').then((data) => {
+      TransferPage.visit()
+      TransferPage.transferir(data.invalidTransfer.amount)
+      TransferPage.validarTransferenciaFallida()
+    })
+  })
+
 })

@@ -27,6 +27,10 @@ class TransferPage {
     this.successMessage.should('be.visible')
   }
 
+  validarTransferenciaFallida() {
+    cy.contains('Please enter a valid amount').should('exist')
+  }
+
 }
 
 export default new TransferPage()
