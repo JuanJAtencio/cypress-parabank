@@ -1,53 +1,49 @@
-# 🚀 Proyecto Cypress - Parabank QA Automation
+# 🚀 Proyecto Cypress - ParaBank QA Automation
 
-Automatización de pruebas E2E para el sitio **[Parabank](https://parabank.parasoft.com/parabank)**  
-Desarrollado con **Cypress** y **JavaScript** para validar los flujos funcionales principales.
-
----
+Automatización de pruebas end-to-end sobre [ParaBank](https://parabank.parasoft.com/parabank), desarrollada con Cypress y JavaScript para validar flujos bancarios principales.
 
 ## 🧰 Tecnologías
 
-- Cypress 13+
-- JavaScript (ES6)
-- Visual Studio Code
+- Cypress 14
+- JavaScript
 - Node.js
-
----
+- Page Object Model (POM)
 
 ## 🧪 Casos automatizados
 
 1. Verificación de carga del sitio
 2. Login fallido
-3. Registro de nuevo usuario
+3. Registro de un nuevo usuario
 4. Login exitoso y logout
 5. Transferencia de fondos entre cuentas
+6. Verificación de solicitudes con `cy.intercept()`
 
----
+## 🧱 Estructura
 
-## 🧱 Arquitectura
+- `cypress/e2e/`: casos de prueba
+- `cypress/pages/`: Page Objects reutilizables
+- `cypress/fixtures/`: datos y plan de pruebas
+- `cypress/support/`: configuración y comandos compartidos
 
-El proyecto implementa Page Object Model (POM) para mejorar la mantenibilidad y reutilización del código.
+## ▶️ Instalación y ejecución
 
-- Cada página tiene su archivo en `/pages`
-- Los tests en `/e2e` consumen estos métodos
-- Se separa lógica de UI de los tests
-
-Ejemplo:
-
-LoginPage.js → acciones sobre login  
-login.cy.js → flujo de prueba
-
-## ▶️ Cómo ejecutar las pruebas
-
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/JuanJAtencio/cypress-parabank.git
+```bash
+git clone https://github.com/JuanJAtencio/cypress-parabank.git
 cd cypress-parabank
-   cd Cypress-Parabank
-   ```
-## ⚙️ Buenas prácticas
+npm install
+npm run cypress:run
+```
 
-- Uso de Page Object Model (POM)
-- Datos dinámicos para evitar conflictos
-- Separación de responsabilidades
+Para abrir la interfaz de Cypress:
+
+```bash
+npm run cypress:open
+```
+
+## ✅ Buenas prácticas aplicadas
+
+- Separación entre pruebas y acciones de página mediante POM
+- Datos dinámicos para reducir conflictos
+- Fixtures para centralizar datos de prueba
 - Tests independientes
+- Validaciones funcionales y de red
