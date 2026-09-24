@@ -21,7 +21,7 @@ describe('Transferencia de fondos', () => {
   it('Verifica que la request de transferencia se envía al servidor', () => {
     cy.fixture('transfer').then((data) => {
 
-      cy.intercept('POST', '**/transfer.htm').as('transferRequest')
+      cy.intercept('POST', '**/transfer**').as('transferRequest')
 
       TransferPage.visit()
       TransferPage.transferir(data.validTransfer.amount)
