@@ -1,9 +1,9 @@
 import RegisterPage from '../pages/RegisterPage'
 import LoginPage from '../pages/LoginPage'
 
-describe('Registro + Login', () => {
+describe('Registro de cliente', () => {
 
-  it('Crear usuario y loguearse', () => {
+  it('Registra un cliente con datos válidos', () => {
     cy.fixture('profile').then((profile) => {
 
       const user = {
@@ -21,9 +21,8 @@ describe('Registro + Login', () => {
 
       LoginPage.visit()
       RegisterPage.irARegistro()
-      RegisterPage.completarFormulario(user)
-      RegisterPage.enviar()
-      RegisterPage.validarRegistroExitoso()
+      RegisterPage.register(user)
+      RegisterPage.validarRegistroExitoso(user.username)
 
     })
   })

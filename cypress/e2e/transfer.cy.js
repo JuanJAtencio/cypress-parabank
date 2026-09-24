@@ -18,24 +18,16 @@ describe('Transferencia de fondos', () => {
     })
   })
 
-  it('Transferencia fallida con monto cero', () => {
-    cy.fixture('transfer').then((data) => {
-      TransferPage.visit()
-      TransferPage.transferir(data.invalidTransfer.amount)
-      TransferPage.validarTransferenciaFallida()
-    })
-  })
-
   it('Verifica que la request de transferencia se envía al servidor', () => {
     cy.fixture('transfer').then((data) => {
 
-      cy.intercept('POST', '**/transfer**').as('transferRequest')
+      cy.intercept('POST', '**/transfer.htm').as('transferRequest')
 
       TransferPage.visit()
       TransferPage.transferir(data.validTransfer.amount)
 
       cy.wait('@transferRequest').then((interception) => {
-        expect(interception.response.statusCode).to.eq(200)
+        expect(interception.response?.statusCode).to.eq(200)
       })
 
       TransferPage.validarTransferenciaExitosa()

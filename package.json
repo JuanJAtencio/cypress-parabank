@@ -5,7 +5,8 @@
   "scripts": {
     "test": "cypress run",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "test:ci": "cypress run --browser electron --reporter junit --reporter-options mochaFile=reports/junit-[hash].xml,toConsole=true"
   },
   "keywords": [
     "e2e",
@@ -17,6 +18,6 @@
   "author": "Juan Atencio",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^14.4.0"
+    "cypress": "14.4.0"
   }
 }

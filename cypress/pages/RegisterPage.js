@@ -1,8 +1,4 @@
-// cypress/pages/RegisterPage.js
-
 class RegisterPage {
-
-  // --- Selectores ---
   get firstNameInput()  { return cy.get('input[name="customer.firstName"]') }
   get lastNameInput()   { return cy.get('input[name="customer.lastName"]') }
   get addressInput()    { return cy.get('input[name="customer.address.street"]') }
@@ -18,7 +14,6 @@ class RegisterPage {
   get logoutLink()      { return cy.contains('Log Out') }
   get registerLink()    { return cy.contains('Register') }
 
-  // --- Acciones ---
   irARegistro() {
     this.registerLink.click()
   }
@@ -41,14 +36,13 @@ class RegisterPage {
     this.submitButton.click()
   }
 
-  // --- Flujo completo ---
   register(user) {
     this.completarFormulario(user)
     this.enviar()
   }
 
-  // --- Validaciones ---
-  validarRegistroExitoso() {
+  validarRegistroExitoso(username) {
+    cy.get('#rightPanel').should('contain', `Welcome ${username}`)
     this.logoutLink.should('be.visible')
   }
 

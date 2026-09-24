@@ -1,49 +1,85 @@
-# 🚀 Proyecto Cypress - ParaBank QA Automation
+# ParaBank QA Automation with Cypress
 
-Automatización de pruebas end-to-end sobre [ParaBank](https://parabank.parasoft.com/parabank), desarrollada con Cypress y JavaScript para validar flujos bancarios principales.
+[![Cypress E2E Tests](https://github.com/JuanJAtencio/cypress-parabank/actions/workflows/cypress-tests.yml/badge.svg)](https://github.com/JuanJAtencio/cypress-parabank/actions/workflows/cypress-tests.yml)
 
-## 🧰 Tecnologías
+End-to-end test automation portfolio project for the [ParaBank](https://parabank.parasoft.com/parabank) banking demo. The suite covers authentication, customer registration and fund transfers using Cypress, JavaScript, fixtures, Page Object Model and GitHub Actions.
+
+## Test coverage
+
+| Module | Scenario | Expected result |
+| --- | --- | --- |
+| Authentication | Login with valid credentials | Account overview is displayed |
+| Authentication | Login with invalid credentials | Error message is displayed |
+| Registration | Register a customer with unique data | Welcome message and authenticated session |
+| Transfers | Transfer funds between different accounts | Transfer confirmation is displayed |
+| Network | Inspect the transfer request with `cy.intercept()` | Server responds with HTTP `200` |
+
+See the complete [test strategy](docs/test-strategy.md) for scope, risks and execution criteria.
+
+## Technologies
 
 - Cypress 14
 - JavaScript
-- Node.js
-- Page Object Model (POM)
+- Node.js and npm
+- Page Object Model
+- Fixtures and dynamic test data
+- Network validation with `cy.intercept()`
+- GitHub Actions
+- JUnit reports
 
-## 🧪 Casos automatizados
+## Project structure
 
-1. Verificación de carga del sitio
-2. Login fallido
-3. Registro de un nuevo usuario
-4. Login exitoso y logout
-5. Transferencia de fondos entre cuentas
-6. Verificación de solicitudes con `cy.intercept()`
+```text
+.
+├── .github/workflows/cypress-tests.yml
+├── cypress/
+│   ├── e2e/
+│   ├── fixtures/
+│   ├── pages/
+│   └── support/
+├── docs/test-strategy.md
+├── cypress.config.js
+├── package.json
+└── README.md
+```
 
-## 🧱 Estructura
+## Run locally
 
-- `cypress/e2e/`: casos de prueba
-- `cypress/pages/`: Page Objects reutilizables
-- `cypress/fixtures/`: datos y plan de pruebas
-- `cypress/support/`: configuración y comandos compartidos
-
-## ▶️ Instalación y ejecución
+Requirements: Node.js 20 or newer and npm.
 
 ```bash
 git clone https://github.com/JuanJAtencio/cypress-parabank.git
 cd cypress-parabank
 npm install
-npm run cypress:run
+npm test
 ```
 
-Para abrir la interfaz de Cypress:
+Open the Cypress interface:
 
 ```bash
 npm run cypress:open
 ```
 
-## ✅ Buenas prácticas aplicadas
+Run the CI command with JUnit reporting:
 
-- Separación entre pruebas y acciones de página mediante POM
-- Datos dinámicos para reducir conflictos
-- Fixtures para centralizar datos de prueba
-- Tests independientes
-- Validaciones funcionales y de red
+```bash
+npm run test:ci
+```
+
+## Automation design
+
+- `baseUrl` centralizes the target environment.
+- Page Objects isolate selectors and reusable user actions.
+- Fixtures separate test data from test logic.
+- Unique usernames prevent registration collisions.
+- Transfers select different origin and destination accounts.
+- Run-mode retries reduce noise caused by the public demo environment.
+- Screenshots and JUnit results are uploaded by GitHub Actions for 14 days.
+
+## Continuous integration
+
+The `Cypress E2E Tests` workflow runs on pushes and pull requests to `main`, and it can also be started manually from the Actions tab. A failed execution preserves screenshots and the JUnit report as downloadable evidence.
+
+## Author
+
+**Juan José Atencio** — QA Analyst focused on banking, API testing and test automation.
